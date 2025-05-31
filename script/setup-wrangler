@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Load CLOUDFLARE_HYPERDRIVE_ID from .dev.vars if not already set
+if [ -z "$CLOUDFLARE_HYPERDRIVE_ID" ] && [ -f ".dev.vars" ]; then
+    export $(grep "^CLOUDFLARE_HYPERDRIVE_ID=" .dev.vars | xargs)
+fi
+
+# If CLOUDFLARE_HYPERDRIVE_ID is still not set, exit with an error
+if [ -z "$CLOUDFLARE_HYPERDRIVE_ID" ]; then
+    echo "Error: CLOUDFLARE_HYPERDRIVE_ID is not set. Please set it in .dev.vars or export it in your environment."
+    exit 1
+fi
+
+sed "s/CLOUDFLARE_HYPERDRIVE_ID/$CLOUDFLARE_HYPERDRIVE_ID/g" wrangler.example.jsonc > wrangler.jsonc

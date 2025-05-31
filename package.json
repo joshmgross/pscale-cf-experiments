@@ -1,0 +1,26 @@
+{
+	"name": "ty",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"deploy": "script/setup-wrangler && wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"cf-typegen": "wrangler types"
+	},
+	"engines": {
+		"node": ">=23.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.15.29",
+		"dotenv": "^16.5.0",
+		"typescript": "^5.5.2",
+		"wrangler": "^4.16.1"
+	},
+	"dependencies": {
+		"@planetscale/database": "^1.19.0",
+		"itty-router": "^5.0.18",
+		"mysql2": "^3.14.1"
+	}
+}
